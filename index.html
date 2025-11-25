@@ -132,7 +132,7 @@
       <div class="space-y-4">
        <div><label for="customer-name" class="block text-sm font-medium text-[#475569] mb-2"> 訂購人名稱 <span class="text-[#EF4444]">*</span> </label> <input type="text" id="customer-name" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="請輸入您的姓名">
        </div>
-       <div><label for="store-location" class="block text-sm font-medium text-[#475569] mb-2"> 取貨門����� <span class="text-[#EF4444]">*</span> </label> <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路">
+       <div><label for="store-location" class="block text-sm font-medium text-[#475569] mb-2"> 取貨門市 <span class="text-[#EF4444]">*</span> </label> <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路">
        </div>
        <div><label for="customer-phone" class="block text-sm font-medium text-[#475569] mb-2"> 取貨人電話 <span class="text-[#EF4444]">*</span> </label> <input type="tel" id="customer-phone" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：0912-345-678">
        </div>
@@ -262,7 +262,7 @@
      <p id="footer-note" class="text-xs text-center text-[#64748B] leading-relaxed">本頁面為訂單試算工具，實際商品與價格以團購公告為準。</p>
     </footer>
    </div>
-  </div><!-- 訂單確認彈窗 -->
+  </div><!-- 訂單確認彈��� -->
   <div id="order-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
    <div class="modal-overlay bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90%] overflow-y-auto">
     <div class="sticky top-0 bg-gradient-to-r from-[#6366F1] to-[#4F46E5] px-6 py-5 flex items-center justify-between">
@@ -302,7 +302,7 @@
           return;
         }
 
-        // 在 LINE App → 正常初始化
+        // 在 LINE App → ���常初始化
         await liff.init({ liffId: LIFF_ID });
 
         if (!liff.isLoggedIn()) {
@@ -538,7 +538,7 @@
           <div class="space-y-2">
             <div class="flex items-center gap-2">
               <span class="text-xl">🕐</span>
-              <span class="text-sm text-[#64748B]">訂單時間：</span>
+              <span class="text-sm text-[#64748B]">訂單時間���</span>
               <span class="font-semibold text-[#1E293B]">${formattedDate}</span>
             </div>
             <div class="flex items-center gap-2">
@@ -812,5 +812,5 @@
       calculateTotal();
     })();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3e7686e2d16b72',t:'MTc2NDA0NTU3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3e7ad9d51f6b72',t:'MTc2NDA0NTc1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
