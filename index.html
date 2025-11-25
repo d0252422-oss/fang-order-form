@@ -459,7 +459,7 @@
         <div class="bg-[#F8FAFC] rounded-2xl p-5 border border-[#E2E8F0]">
           <div class="flex items-center gap-2 mb-3">
             <span class="text-2xl">📋</span>
-            <h3 class="text-lg font-bold text-[#1E293B]">訂單編號</h3>
+            <h3 class="text-lg font-bold text-[#1E293B]">訂單編��</h3>
           </div>
           <p class="text-xl font-mono font-semibold text-[#6366F1]">${orderData.order_id}</p>
         </div>
@@ -554,13 +554,18 @@
       modal.classList.add('flex');
     }
 
+    // ⭐ 格式化訂單明細（給 Make + LINE 使用）
+    function formatItemsForText(items) {
+      return items.map(item =>
+        `${item.name} x${item.quantity} = $${item.subtotal}`
+      ).join('\n');
+    }
+
     async function sendToWebhook(orderData) {
       const webhookUrl = 'https://hook.us2.make.com/n77h23qh56jxi7idshlmcm96yt9qrrc1';
 
       // 格式化訂單明細為易讀文字
-      const itemsText = orderData.items_list.map(item => 
-        `${item.name}(${item.quantity}) $${item.price} x ${item.quantity} = $${item.subtotal}`
-      ).join(' | ');
+      const itemsText = formatItemsForText(orderData.items_list);
 
       const formattedData = {
         order_id: orderData.order_id,
@@ -648,7 +653,7 @@
       });
 
       if (!hasItems) {
-        showMessage('請至少選擇一項商品', 'error');
+        showMessage('請����選擇一項商品', 'error');
         return;
       }
 
@@ -807,5 +812,5 @@
       calculateTotal();
     })();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3e660320b2a339',t:'MTc2NDA0NDg5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3e709164a16b72',t:'MTc2NDA0NTMzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
