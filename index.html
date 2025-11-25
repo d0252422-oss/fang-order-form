@@ -132,7 +132,7 @@
       <div class="space-y-4">
        <div><label for="customer-name" class="block text-sm font-medium text-[#475569] mb-2"> 訂購人名稱 <span class="text-[#EF4444]">*</span> </label> <input type="text" id="customer-name" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="請輸入您的姓名">
        </div>
-       <div><label for="store-location" class="block text-sm font-medium text-[#475569] mb-2"> 取貨門��� <span class="text-[#EF4444]">*</span> </label> <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路">
+       <div><label for="store-location" class="block text-sm font-medium text-[#475569] mb-2"> 取貨門����� <span class="text-[#EF4444]">*</span> </label> <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路">
        </div>
        <div><label for="customer-phone" class="block text-sm font-medium text-[#475569] mb-2"> 取貨人電話 <span class="text-[#EF4444]">*</span> </label> <input type="tel" id="customer-phone" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：0912-345-678">
        </div>
@@ -252,12 +252,12 @@
        </div>
       </div>
      </section>
-    </main><!-- 確��送單按鈕區 -->
+    </main><!-- 確認送單按鈕區 -->
     <div class="bg-white border-t-2 border-[#E2E8F0] px-6 md:px-8 py-5"><button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
       <svg id="submit-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg><span id="submit-text" class="text-lg">確認並送出訂單</span> </button>
      <p id="submit-message" class="text-xs text-center text-[#64748B] mt-3">訂單將發送至 Google 表單</p>
-    </div><!-- 底��備註 -->
+    </div><!-- 底部備註 -->
     <footer class="bg-[#F8FAFC] border-t border-[#E2E8F0] px-6 md:px-8 py-4">
      <p id="footer-note" class="text-xs text-center text-[#64748B] leading-relaxed">本頁面為訂單試算工具，實際商品與價格以團購公告為準。</p>
     </footer>
@@ -270,7 +270,7 @@
       <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-3xl">🛒</span>
       </div>
       <div>
-       <h2 class="text-2xl font-bold text-white">���訂單通知</h2>
+       <h2 class="text-2xl font-bold text-white">訂單通知</h2>
        <p class="text-sm text-white/80">訂單已成功送出</p>
       </div>
      </div><button type="button" id="close-modal-btn" class="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
@@ -291,7 +291,7 @@
       return ua.includes("line");
     }
 
-    // ⭐ 初始化 LIFF��自動判斷環境）
+    // ⭐ 初始化 LIFF（自動判斷環境）
     async function initLIFF() {
       try {
         // 如果不是在 LINE App → Canva/電腦/瀏覽器 → 測試模式
@@ -380,7 +380,7 @@
           volumeWarning = `⚠️ 最長邊 ${longestEdge} cm 超過限制（最長邊不可超過 45 cm）`;
           hasError = true;
         } else if (dimensionSum > 105) {
-          volumeWarning = `⚠️ 長+寬+����和 ${dimensionSum} cm 超過限制（總和不可超過 105 cm）`;
+          volumeWarning = `⚠️ 長+寬+高總和 ${dimensionSum} cm 超過限制（總和不可超過 105 cm）`;
           hasError = true;
         }
       }
@@ -459,7 +459,7 @@
         <div class="bg-[#F8FAFC] rounded-2xl p-5 border border-[#E2E8F0]">
           <div class="flex items-center gap-2 mb-3">
             <span class="text-2xl">📋</span>
-            <h3 class="text-lg font-bold text-[#1E293B]">訂單編��</h3>
+            <h3 class="text-lg font-bold text-[#1E293B]">訂單編號</h3>
           </div>
           <p class="text-xl font-mono font-semibold text-[#6366F1]">${orderData.order_id}</p>
         </div>
@@ -653,7 +653,7 @@
       });
 
       if (!hasItems) {
-        showMessage('請����選擇一項商品', 'error');
+        showMessage('請至少選擇一項商品', 'error');
         return;
       }
 
@@ -812,5 +812,5 @@
       calculateTotal();
     })();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3e709164a16b72',t:'MTc2NDA0NTMzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a3e7686e2d16b72',t:'MTc2NDA0NTU3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
