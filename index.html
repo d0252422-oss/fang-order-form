@@ -27,17 +27,17 @@
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
 
- <!-- ✅ 最上方/最下方：整頁外框 padding 再縮短 -->
  <body class="h-full w-full bg-[#F8FAFC] flex items-center justify-center px-4 md:px-6 py-1.5 md:py-2">
   <div class="w-full max-w-6xl h-full max-h-[920px] mx-auto flex items-center justify-center">
    <div id="order-root" class="w-full h-full bg-white rounded-3xl elegant-shadow border border-[#E2E8F0] overflow-hidden flex flex-col">
 
     <!-- 頂部品牌區 -->
-    <!-- ✅ header 更緊湊 -->
     <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-2 md:py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
      <div class="flex-1">
       <div class="flex items-center gap-3 mb-2">
-       <div class="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center"><span class="text-white text-xl font-bold">F</span></div>
+       <div class="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center">
+        <span class="text-white text-xl font-bold">F</span>
+       </div>
        <div>
         <h1 id="shop-name" class="text-2xl md:text-3xl font-bold text-[#78350F]">Fang心購</h1>
         <p id="shop-tagline" class="text-sm text-[#92400E] mt-0.5">新鮮冷凍 · 安心取貨</p>
@@ -45,17 +45,39 @@
       </div>
      </div>
 
-     <!-- 訂單摘要卡片 -->
-     <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-4 border border-[#F97316]/30 min-w-[240px]">
-      <div class="flex items-center justify-between mb-3"><span class="text-xs uppercase tracking-wider text-[#92400E]">訂單摘要</span> <span class="text-xs text-[#C2410C]">即時計算</span></div>
-      <div class="space-y-2">
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總件數</span> <span id="total-items" class="text-lg font-semibold text-[#78350F]">0 件</span></div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總重量</span> <span id="total-weight" class="text-lg font-semibold text-[#78350F]">0 kg</span></div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總體積</span> <span id="total-volume" class="text-lg font-semibold text-[#78350F]">0 cm³</span></div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">運費</span> <span id="shipping-note" class="text-sm font-medium text-[#92400E]">-</span></div>
-       <div class="h-px bg-[#F97316]/20 my-2"></div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">預估金額</span> <span class="text-2xl font-bold text-[#EA580C]"> $<span id="total-price">0</span> </span></div>
-       <div id="volume-warning" class="mt-3 p-2 bg-[#FEE2E2] border border-[#EF4444] rounded-lg hidden">
+     <!-- ✅ 訂單摘要卡片（更緊湊） -->
+     <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-3 border border-[#F97316]/30 min-w-[240px]">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs uppercase tracking-wider text-[#92400E]">訂單摘要</span>
+        <span class="text-xs text-[#C2410C]">即時計算</span>
+      </div>
+
+      <div class="space-y-1.5">
+       <div class="flex items-center justify-between">
+        <span class="text-sm text-[#78350F]">總件數</span>
+        <span id="total-items" class="text-lg font-semibold text-[#78350F]">0 件</span>
+       </div>
+       <div class="flex items-center justify-between">
+        <span class="text-sm text-[#78350F]">總重量</span>
+        <span id="total-weight" class="text-lg font-semibold text-[#78350F]">0 kg</span>
+       </div>
+       <div class="flex items-center justify-between">
+        <span class="text-sm text-[#78350F]">總體積</span>
+        <span id="total-volume" class="text-lg font-semibold text-[#78350F]">0 cm³</span>
+       </div>
+       <div class="flex items-center justify-between">
+        <span class="text-sm text-[#78350F]">運費</span>
+        <span id="shipping-note" class="text-sm font-medium text-[#92400E]">-</span>
+       </div>
+
+       <div class="h-px bg-[#F97316]/20 my-1.5"></div>
+
+       <div class="flex items-center justify-between">
+        <span class="text-sm text-[#78350F]">預估金額</span>
+        <span class="text-2xl font-bold text-[#EA580C]"> $<span id="total-price">0</span> </span>
+       </div>
+
+       <div id="volume-warning" class="mt-2 p-2 bg-[#FEE2E2] border border-[#EF4444] rounded-lg hidden">
         <p class="text-xs text-[#991B1B] font-medium leading-relaxed"></p>
        </div>
       </div>
@@ -69,7 +91,10 @@
      <section class="bg-gradient-to-br from-[#F1F5F9] to-[#E2E8F0] rounded-2xl p-5 border border-[#CBD5E1]">
       <div class="flex items-start gap-4">
        <div class="w-8 h-8 rounded-lg bg-[#6366F1] flex items-center justify-center flex-shrink-0 mt-0.5">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
        </div>
        <div class="flex-1">
         <h2 class="text-base font-semibold text-[#1E293B] mb-1">取貨超商類型</h2>
@@ -86,7 +111,9 @@
      <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] p-5">
       <div class="flex items-center gap-3 mb-4">
        <div class="w-8 h-8 rounded-lg bg-[#6366F1] flex items-center justify-center">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
        </div>
        <div>
         <h2 class="text-base font-semibold text-[#1E293B]">訂購人資訊</h2>
@@ -261,9 +288,9 @@
 
     </main>
 
-    <!-- ✅ B：底部送出區更短 -->
+    <!-- 底部送出按鈕區 -->
     <div class="bg-white border-t-2 border-[#E2E8F0] px-6 md:px-8 py-1.5 md:py-2">
-      <button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
+      <button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
         <svg id="submit-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
@@ -272,7 +299,7 @@
       <p id="submit-message" class="text-xs text-center text-[#64748B] mt-3">訂單將發送至 Google 表單</p>
     </div>
 
-    <!-- ✅ C：footer 更短 -->
+    <!-- footer -->
     <footer class="bg-[#F8FAFC] border-t border-[#E2E8F0] px-6 md:px-8 py-1 md:py-1.5">
      <p id="footer-note" class="text-xs text-center text-[#64748B] leading-relaxed">本頁面為訂單試算工具，實際商品與價格以團購公告為準。</p>
     </footer>
@@ -312,7 +339,6 @@
     // ⭐ 初始化 LIFF（自動判斷環境）
     async function initLIFF() {
       try {
-        // 如果不是在 LINE App → 測試模式
         if (!isInLineApp()) {
           console.log("非 LINE 環境：啟用測試模式");
           window.LINE_USER_ID = "test_user";
@@ -320,7 +346,6 @@
           return;
         }
 
-        // 在 LINE App → 正常初始化
         await liff.init({ liffId: LIFF_ID });
 
         if (!liff.isLoggedIn()) {
@@ -328,14 +353,10 @@
           return;
         }
 
-        // 取得 LINE 使用者資訊
         const profile = await liff.getProfile();
         window.LINE_USER_ID = profile.userId;
         window.LINE_NAME = profile.displayName;
 
-        console.log("LINE 使用者：", profile);
-
-        // 自動填訂購人姓名
         const nameInput = document.getElementById("customer-name");
         if (nameInput && !nameInput.value.trim()) {
           nameInput.value = profile.displayName;
@@ -456,11 +477,7 @@
 
       const orderDate = new Date(orderData.order_date);
       const formattedDate = orderDate.toLocaleString('zh-TW', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit'
+        year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
       });
 
       const itemsHtml = orderData.items_list.map(item =>
