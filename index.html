@@ -69,14 +69,14 @@
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
 
- <!-- ✅ A：最上方固定 padding（上下更短，左右不變） -->
+ <!-- ✅ 最上方固定 padding（上下更短，左右不變） -->
  <body class="h-full w-full bg-[#F8FAFC] flex items-center justify-center px-4 md:px-6 py-2 md:py-2.5">
   <div class="w-full max-w-6xl h-full max-h-[920px] mx-auto flex items-center justify-center">
    <div id="order-root" class="w-full h-full bg-white rounded-3xl elegant-shadow border border-[#E2E8F0] overflow-hidden flex flex-col">
 
     <!-- 頂部品牌區 -->
-    <!-- ✅ A：header 固定區上下 padding 更短 -->
-    <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-4 md:py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <!-- ✅ header：更緊湊（py-2.5） -->
+    <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-2.5 md:py-2.5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
      <div class="flex-1">
       <div class="flex items-center gap-3 mb-2">
        <div class="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center"><span class="text-white text-xl font-bold">F</span>
@@ -232,7 +232,7 @@
       </div>
      </section>
 
-     <!-- 冷凍���菜區 -->
+     <!-- 冷凍蔬菜區 -->
      <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
       <div class="bg-gradient-to-r from-[#10B981] to-[#14B8A6] px-5 py-4">
        <div class="flex items-center gap-3">
@@ -275,8 +275,7 @@
     </main>
 
     <!-- ✅ B：確認送單按鈕區（上下 padding 更短） -->
-    <div class="bg-white border-t-2 border-[#E2E8F0] px-6 md:px-8 py-2 md:py-2.5">
-     <button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
+    <div class="bg-white border-t-2 border-[#E2E8F0] px-6 md:px-8 py-2 md:py-2.5"><button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
       <svg id="submit-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg><span id="submit-text" class="text-lg">確認並送出訂單</span> </button>
      <p id="submit-message" class="text-xs text-center text-[#64748B] mt-3">訂單將發送至 Google 表單</p>
