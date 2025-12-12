@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Fang心購 - 打造專屬訂單</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -13,7 +13,6 @@
     * { -webkit-tap-highlight-color: transparent; }
     .elegant-shadow { box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25); }
     .focus-ring:focus-visible { outline: 3px solid rgba(99, 102, 241, 0.5); outline-offset: 2px; }
-
     .qty-btn {
       transition: all 0.2s ease;
       -webkit-user-select: none;
@@ -22,30 +21,19 @@
       touch-action: manipulation;
     }
     .qty-btn:active { transform: scale(0.95); }
-
     button { -webkit-appearance: none; appearance: none; }
-
     input[type="text"], input[type="tel"], input[type="number"] {
       -webkit-appearance: none;
       appearance: none;
       border-radius: 12px;
     }
-
     .store-btn { touch-action: manipulation; -webkit-user-select: none; user-select: none; }
-
     @keyframes spin { to { transform: rotate(360deg); } }
     .animate-spin { animation: spin 1s linear infinite; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     .modal-overlay { animation: fadeIn 0.2s ease-out; }
   </style>
-
   <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
 </head>
 
 <body class="h-full w-full bg-[#F8FAFC] flex items-center justify-center px-4 md:px-6 py-1.5 md:py-2">
@@ -53,7 +41,7 @@
     <div id="order-root" class="w-full h-full bg-white rounded-3xl elegant-shadow border border-[#E2E8F0] overflow-hidden flex flex-col">
 
       <!-- 頂部品牌區 -->
-      <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-1 md:py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4">
+      <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-1 md:py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-3">
         <div class="flex-1">
           <div class="flex items-center gap-3 mb-1">
             <div class="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center">
@@ -66,7 +54,7 @@
           </div>
         </div>
 
-        <!-- 訂單摘要卡片（更扁、更貼） -->
+        <!-- 訂單摘要卡片（更扁） -->
         <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-2 border border-[#F97316]/30 min-w-[240px]">
           <div class="flex items-center justify-between mb-2">
             <span class="text-xs uppercase tracking-wider text-[#92400E]">訂單摘要</span>
@@ -95,7 +83,7 @@
 
             <div class="flex items-center justify-between">
               <span class="text-sm text-[#78350F]">預估金額</span>
-              <span class="text-xl font-bold text-[#EA580C]">$<span id="total-price">0</span></span>
+              <span class="text-xl font-bold text-[#EA580C]"> $<span id="total-price">0</span> </span>
             </div>
 
             <div id="volume-warning" class="mt-2 p-2 bg-[#FEE2E2] border border-[#EF4444] rounded-lg hidden">
@@ -144,176 +132,36 @@
           <div class="space-y-4">
             <div>
               <label for="customer-name" class="block text-sm font-medium text-[#475569] mb-2">訂購人名稱 <span class="text-[#EF4444]">*</span></label>
-              <input type="text" id="customer-name" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="請輸入您的姓名" />
+              <input type="text" id="customer-name" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="請輸入您的姓名">
             </div>
-
             <div>
               <label for="store-location" class="block text-sm font-medium text-[#475569] mb-2">取貨門市 <span class="text-[#EF4444]">*</span></label>
-              <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路" />
+              <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路">
             </div>
-
             <div>
               <label for="customer-phone" class="block text-sm font-medium text-[#475569] mb-2">取貨人電話 <span class="text-[#EF4444]">*</span></label>
-              <input type="tel" id="customer-phone" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：0912-345-678" />
+              <input type="tel" id="customer-phone" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：0912-345-678">
             </div>
           </div>
         </section>
 
-        <!-- 冷凍海鮮區 -->
-        <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
-          <div class="bg-gradient-to-r from-[#0EA5E9] to-[#06B6D4] px-5 py-4">
+        <!-- ✅ 商品區：完全由 Sheet 動態生成 -->
+        <div id="catalog" class="space-y-6">
+          <div id="catalog-loading" class="bg-white rounded-2xl border-2 border-[#E2E8F0] p-5">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🦐</span></div>
+              <div class="w-8 h-8 rounded-lg bg-[#6366F1] flex items-center justify-center">
+                <div class="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin"></div>
+              </div>
               <div>
-                <h2 id="seafood-title" class="text-xl font-bold text-white">冷凍海鮮</h2>
-                <p class="text-sm text-white/80">深海直送 · 鎖住鮮味</p>
+                <div class="text-base font-semibold text-[#1E293B]">正在載入商品...</div>
+                <div class="text-sm text-[#64748B]">從 Google Sheet 讀取中</div>
               </div>
             </div>
           </div>
-
-          <div class="p-5 space-y-4">
-            <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-2">
-                  <h3 class="text-base font-semibold text-[#1E293B]">冷凍白蝦（大）</h3><span class="text-lg font-bold text-[#0EA5E9]">$260</span>
-                </div>
-                <p class="text-sm text-[#64748B] mb-2">630g / 包</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.63 kg</span>
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]">需冷凍</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="seafood-1">−</button>
-                <input type="number" id="seafood-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly />
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="seafood-1">+</button>
-              </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-2">
-                  <h3 class="text-base font-semibold text-[#1E293B]">冷凍白蝦（小）</h3><span class="text-lg font-bold text-[#0EA5E9]">$340</span>
-                </div>
-                <p class="text-sm text-[#64748B] mb-2">830g / 包</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.83 kg</span>
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]">需冷凍</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="seafood-2">−</button>
-                <input type="number" id="seafood-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly />
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="seafood-2">+</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 冷凍肉品區 -->
-        <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
-          <div class="bg-gradient-to-r from-[#EF4444] to-[#F97316] px-5 py-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🥩</span></div>
-              <div>
-                <h2 id="meat-title" class="text-xl font-bold text-white">冷凍肉品</h2>
-                <p class="text-sm text-white/80">嚴選產地 · 品質保證</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-5 space-y-4">
-            <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-2">
-                  <h3 class="text-base font-semibold text-[#1E293B]">鹽酥棒棒腿</h3><span class="text-lg font-bold text-[#EF4444]">$35</span>
-                </div>
-                <p class="text-sm text-[#64748B] mb-2">約 150g / 支</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.15 kg</span>
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEE2E2] text-xs font-medium text-[#991B1B]">即食方便</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="meat-1">−</button>
-                <input type="number" id="meat-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly />
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="meat-1">+</button>
-              </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-2">
-                  <h3 class="text-base font-semibold text-[#1E293B]">鹽酥大雞腿</h3><span class="text-lg font-bold text-[#EF4444]">$65</span>
-                </div>
-                <p class="text-sm text-[#64748B] mb-2">約 220g / 支</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.22 kg</span>
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#D1FAE5] text-xs font-medium text-[#065F46]">大份量</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="meat-2">−</button>
-                <input type="number" id="meat-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly />
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="meat-2">+</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 冷凍蔬菜區 -->
-        <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
-          <div class="bg-gradient-to-r from-[#10B981] to-[#14B8A6] px-5 py-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🥦</span></div>
-              <div>
-                <h2 id="vegetable-title" class="text-xl font-bold text-white">冷凍蔬菜</h2>
-                <p class="text-sm text-white/80">急速冷凍 · 保留營養</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-5 space-y-4">
-            <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-2">
-                  <h3 class="text-base font-semibold text-[#1E293B]">冷凍花椰菜</h3><span class="text-lg font-bold text-[#10B981]">$80</span>
-                </div>
-                <p class="text-sm text-[#64748B] mb-2">1000g / 包</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">1.0 kg</span>
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#D1FAE5] text-xs font-medium text-[#065F46]">IQF 急凍</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="veg-1">−</button>
-                <input type="number" id="veg-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly />
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="veg-1">+</button>
-              </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
-              <div class="flex-1">
-                <div class="flex items-start justify-between mb-2">
-                  <h3 class="text-base font-semibold text-[#1E293B]">冷凍馬鈴薯丁</h3><span class="text-lg font-bold text-[#10B981]">$110</span>
-                </div>
-                <p class="text-sm text-[#64748B] mb-2">1000g / 包</p>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">1.0 kg</span>
-                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]">方便料理</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="veg-2">−</button>
-                <input type="number" id="veg-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly />
-                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="veg-2">+</button>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </main>
 
-      <!-- 送出按鈕區 -->
+      <!-- 確認送單按鈕區（更貼底、按鈕更扁） -->
       <div class="bg-white border-t-2 border-[#E2E8F0] px-6 md:px-8 py-1.5 md:py-2">
         <button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
           <svg id="submit-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
@@ -324,7 +172,7 @@
         <p id="submit-message" class="text-xs text-center text-[#64748B] mt-3">訂單將發送至 Google 表單</p>
       </div>
 
-      <!-- footer -->
+      <!-- 底部備註（更短） -->
       <footer class="bg-[#F8FAFC] border-t border-[#E2E8F0] px-6 md:px-8 py-1 md:py-1.5">
         <p id="footer-note" class="text-xs text-center text-[#64748B] leading-relaxed">本頁面為訂單試算工具，實際商品與價格以團購公告為準。</p>
       </footer>
@@ -354,8 +202,37 @@
   </div>
 
   <script>
+    // =========================
+    // 基本設定
+    // =========================
     const LIFF_ID = "2008554940-VeRlOWJz";
+    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRx90m9Sgf0zrkv6S44i903b6Z_LUXB283A5eX7g3pzTMJHn3UHFrUUSN9hDzIpyVvjy5v4JGqdg7Xs/pub?output=csv";
 
+    // webhook（保留你原本）
+    const WEBHOOK_URL = "https://hook.us2.make.com/n77h23qh56jxi7idshlmcm96yt9qrrc1";
+
+    // products：由 Sheet 覆蓋（key=product_id）
+    let products = {};
+    // 用來保留 Sheet 的原始順序
+    let productOrder = [];
+
+    // 分類樣式（你可自行加）
+    const CATEGORY_STYLE = {
+      "冷凍海鮮": { emoji:"🦐", gradient:"from-[#0EA5E9] to-[#06B6D4]", priceClass:"text-[#0EA5E9]", subtitle:"深海直送 · 鎖住鮮味" },
+      "冷凍肉品": { emoji:"🥩", gradient:"from-[#EF4444] to-[#F97316]", priceClass:"text-[#EF4444]", subtitle:"嚴選產地 · 品質保證" },
+      "冷凍蔬菜": { emoji:"🥦", gradient:"from-[#10B981] to-[#14B8A6]", priceClass:"text-[#10B981]", subtitle:"急速冷凍 · 保留營養" }
+    };
+
+    function getCategoryStyle(category) {
+      const base = CATEGORY_STYLE[category];
+      if (base) return base;
+      // 其他分類：給預設風格
+      return { emoji:"📦", gradient:"from-[#64748B] to-[#334155]", priceClass:"text-[#334155]", subtitle:"請以公告資訊為準" };
+    }
+
+    // =========================
+    // LIFF
+    // =========================
     function isInLineApp() {
       const ua = navigator.userAgent.toLowerCase();
       return ua.includes("line");
@@ -371,37 +248,249 @@
         }
 
         await liff.init({ liffId: LIFF_ID });
-
-        if (!liff.isLoggedIn()) {
-          liff.login();
-          return;
-        }
+        if (!liff.isLoggedIn()) { liff.login(); return; }
 
         const profile = await liff.getProfile();
         window.LINE_USER_ID = profile.userId;
         window.LINE_NAME = profile.displayName;
 
         const nameInput = document.getElementById("customer-name");
-        if (nameInput && !nameInput.value.trim()) {
-          nameInput.value = profile.displayName;
-        }
+        if (nameInput && !nameInput.value.trim()) nameInput.value = profile.displayName;
+
       } catch (err) {
         console.error("LIFF 初始化錯誤:", err);
         window.LINE_USER_ID = "error_user";
         window.LINE_NAME = "測試使用者";
       }
     }
-    initLIFF();
 
-    const products = {
-      'seafood-1': { price: 260, weight: 0.63, volume: { l: 17, w: 30, h: 5 }, name: '冷凍白蝦（大）' },
-      'seafood-2': { price: 340, weight: 0.83, volume: { l: 17, w: 30, h: 5 }, name: '冷凍白蝦（小）' },
-      'meat-1': { price: 35, weight: 0.15, volume: { l: 11, w: 15, h: 3 }, name: '鹽酥棒棒腿' },
-      'meat-2': { price: 65, weight: 0.22, volume: { l: 15, w: 15, h: 3 }, name: '鹽酥大雞腿' },
-      'veg-1': { price: 80, weight: 1.0, volume: { l: 25, w: 30, h: 4 }, name: '冷凍花椰菜' },
-      'veg-2': { price: 110, weight: 1.0, volume: { l: 25, w: 30, h: 4 }, name: '冷凍馬鈴薯丁' }
-    };
+    // =========================
+    // CSV 解析（支援引號/逗號）
+    // =========================
+    function withCacheBust(url) {
+      const sep = url.includes("?") ? "&" : "?";
+      return `${url}${sep}cachebust=${Date.now()}`;
+    }
 
+    function parseCSV(text) {
+      const rows = [];
+      let row = [], cur = "", inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        const next = text[i + 1];
+
+        if (c === '"' && inQuotes && next === '"') { cur += '"'; i++; continue; }
+        if (c === '"') { inQuotes = !inQuotes; continue; }
+
+        if (c === "," && !inQuotes) { row.push(cur); cur = ""; continue; }
+
+        if ((c === "\n" || c === "\r") && !inQuotes) {
+          if (c === "\r" && next === "\n") i++;
+          row.push(cur);
+          if (row.some(v => String(v).trim() !== "")) rows.push(row);
+          row = []; cur = "";
+          continue;
+        }
+
+        cur += c;
+      }
+
+      row.push(cur);
+      if (row.some(v => String(v).trim() !== "")) rows.push(row);
+      return rows;
+    }
+
+    function toNumber(v, fallback = 0) {
+      const n = Number(String(v).trim());
+      return Number.isFinite(n) ? n : fallback;
+    }
+
+    // =========================
+    // 從 Sheet 載入商品
+    // 欄位：product_id, category, name, price, weight_kg, l_cm, w_cm, h_cm, badge1, badge2
+    // =========================
+    async function loadProductsFromSheet() {
+      const res = await fetch(withCacheBust(SHEET_CSV_URL), { cache: "no-store" });
+      if (!res.ok) throw new Error(`Sheet fetch failed: HTTP ${res.status}`);
+      const csv = await res.text();
+
+      const table = parseCSV(csv);
+      if (table.length < 2) throw new Error("CSV empty");
+
+      const headers = table[0].map(h => String(h).trim());
+      const idx = (name) => headers.indexOf(name);
+
+      const col = {
+        product_id: idx("product_id"),
+        category: idx("category"),
+        name: idx("name"),
+        price: idx("price"),
+        weight_kg: idx("weight_kg"),
+        l_cm: idx("l_cm"),
+        w_cm: idx("w_cm"),
+        h_cm: idx("h_cm"),
+        badge1: idx("badge1"),
+        badge2: idx("badge2")
+      };
+
+      const required = ["product_id","category","name","price","weight_kg","l_cm","w_cm","h_cm"];
+      for (const k of required) if (col[k] === -1) throw new Error(`Missing column: ${k}`);
+
+      const nextProducts = {};
+      const nextOrder = [];
+
+      for (let r = 1; r < table.length; r++) {
+        const row = table[r];
+
+        const pid = String(row[col.product_id] || "").trim();
+        if (!pid) continue;
+
+        const category = String(row[col.category] || "").trim();
+        const name = String(row[col.name] || "").trim();
+        const price = toNumber(row[col.price], NaN);
+        if (!Number.isFinite(price)) continue;
+
+        const weight = toNumber(row[col.weight_kg], 0);
+        const l = toNumber(row[col.l_cm], 0);
+        const w = toNumber(row[col.w_cm], 0);
+        const h = toNumber(row[col.h_cm], 0);
+        const badge1 = col.badge1 !== -1 ? String(row[col.badge1] || "").trim() : "";
+        const badge2 = col.badge2 !== -1 ? String(row[col.badge2] || "").trim() : "";
+
+        nextProducts[pid] = {
+          product_id: pid,
+          category,
+          name,
+          price,
+          weight,
+          volume: { l, w, h },
+          badge1,
+          badge2
+        };
+        nextOrder.push(pid);
+      }
+
+      products = nextProducts;
+      productOrder = nextOrder;
+
+      console.log("✅ Sheet 載入完成：", products);
+    }
+
+    // =========================
+    // ✅ Sheet Render：分類自動生成 + 商品卡片自動生成
+    // =========================
+    function groupByCategoryInOrder() {
+      const map = new Map(); // category -> pid[]
+      for (const pid of productOrder) {
+        const p = products[pid];
+        if (!p) continue;
+        const cat = p.category || "未分類";
+        if (!map.has(cat)) map.set(cat, []);
+        map.get(cat).push(pid);
+      }
+      return map;
+    }
+
+    function formatWeightBadge(weightKg) {
+      if (!weightKg) return "";
+      const w = (weightKg === 1) ? "1.0" : weightKg.toFixed(2);
+      return `${w} kg`;
+    }
+
+    function formatDescByCategory(category, weightKg) {
+      const grams = Math.round((weightKg || 0) * 1000);
+      const isMeat = String(category || "").includes("肉");
+      return isMeat ? `約 ${grams}g / 支` : `${grams}g / 包`;
+    }
+
+    function escapeHtml(s) {
+      return String(s ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function renderCatalogFromProducts() {
+      const catalog = document.getElementById("catalog");
+      if (!catalog) return;
+
+      // 清掉 loading
+      catalog.innerHTML = "";
+
+      const groups = groupByCategoryInOrder();
+      if (groups.size === 0) {
+        catalog.innerHTML = `
+          <div class="bg-white rounded-2xl border-2 border-[#E2E8F0] p-5">
+            <div class="text-base font-semibold text-[#1E293B]">目前沒有商品</div>
+            <div class="text-sm text-[#64748B] mt-1">請確認 Google Sheet 是否有資料列</div>
+          </div>
+        `;
+        return;
+      }
+
+      for (const [category, pids] of groups.entries()) {
+        const style = getCategoryStyle(category);
+
+        const cardsHtml = pids.map(pid => {
+          const p = products[pid];
+          const tagText = p.badge2 ? `${p.badge1} · ${p.badge2}` : (p.badge1 || "");
+          const showTag = !!tagText;
+
+          return `
+            <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]" data-product-card="${escapeHtml(pid)}">
+              <div class="flex-1">
+                <div class="flex items-start justify-between mb-2">
+                  <h3 class="text-base font-semibold text-[#1E293B]">${escapeHtml(p.name)}</h3>
+                  <span class="text-lg font-bold ${style.priceClass}">$${escapeHtml(p.price)}</span>
+                </div>
+                <p class="text-sm text-[#64748B] mb-2">${escapeHtml(formatDescByCategory(category, p.weight))}</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">${escapeHtml(formatWeightBadge(p.weight))}</span>
+                  <span class="inline-flex items-center px-2 py-1 rounded-lg ${showTag ? "bg-[#FEF3C7] text-[#92400E]" : "hidden"} text-xs font-medium">${escapeHtml(tagText)}</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold"
+                        data-action="decrease" data-target="${escapeHtml(pid)}"> − </button>
+                <input type="number" id="${escapeHtml(pid)}" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring"
+                       value="0" min="0" readonly>
+                <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold"
+                        data-action="increase" data-target="${escapeHtml(pid)}"> + </button>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        const sectionHtml = `
+          <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
+            <div class="bg-gradient-to-r ${style.gradient} px-5 py-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <span class="text-2xl">${style.emoji}</span>
+                </div>
+                <div>
+                  <h2 class="text-xl font-bold text-white">${escapeHtml(category)}</h2>
+                  <p class="text-sm text-white/80">${escapeHtml(style.subtitle)}</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 space-y-4">
+              ${cardsHtml}
+            </div>
+          </section>
+        `;
+
+        catalog.insertAdjacentHTML("beforeend", sectionHtml);
+      }
+    }
+
+    // =========================
+    // 計算
+    // =========================
     function calculateTotal() {
       let totalItems = 0;
       let totalWeight = 0;
@@ -410,19 +499,23 @@
       let maxWidth = 0;
       let maxHeight = 0;
 
-      Object.keys(products).forEach(id => {
-        const qty = parseInt(document.getElementById(id).value) || 0;
-        if (qty > 0) {
-          totalItems += qty;
-          totalWeight += qty * products[id].weight;
-          subtotal += qty * products[id].price;
+      for (const pid of Object.keys(products)) {
+        const input = document.getElementById(pid);
+        if (!input) continue;
 
-          const vol = products[id].volume;
-          maxLength = Math.max(maxLength, vol.l);
-          maxWidth = Math.max(maxWidth, vol.w);
-          maxHeight = Math.max(maxHeight, vol.h);
+        const qty = parseInt(input.value) || 0;
+        if (qty > 0) {
+          const p = products[pid];
+          totalItems += qty;
+          totalWeight += qty * (p.weight || 0);
+          subtotal += qty * (p.price || 0);
+
+          const v = p.volume || { l:0, w:0, h:0 };
+          maxLength = Math.max(maxLength, v.l || 0);
+          maxWidth  = Math.max(maxWidth,  v.w || 0);
+          maxHeight = Math.max(maxHeight, v.h || 0);
         }
-      });
+      }
 
       const totalVolume = maxLength * maxWidth * maxHeight;
       const dimensionSum = maxLength + maxWidth + maxHeight;
@@ -445,18 +538,11 @@
       }
 
       let shippingFee = 0;
-      let shippingNote = '';
+      let shippingNote = '-';
 
-      if (subtotal > 0 && subtotal < 1500) {
-        shippingFee = 150;
-        shippingNote = '$150';
-      } else if (subtotal >= 1500 && totalWeight <= 9) {
-        shippingFee = 0;
-        shippingNote = '$0';
-      } else if (subtotal >= 1500 && totalWeight > 9) {
-        shippingFee = 0;
-        shippingNote = '超過 9kg 無法送出';
-      }
+      if (subtotal > 0 && subtotal < 1500) { shippingFee = 150; shippingNote = '$150'; }
+      else if (subtotal >= 1500 && totalWeight <= 9) { shippingFee = 0; shippingNote = '$0'; }
+      else if (subtotal >= 1500 && totalWeight > 9) { shippingFee = 0; shippingNote = '超過 9kg 無法送出'; }
 
       const totalPrice = subtotal + shippingFee;
 
@@ -466,34 +552,28 @@
       document.getElementById('total-price').textContent = totalPrice;
 
       const shippingEl = document.getElementById('shipping-note');
-      if (shippingEl) {
-        shippingEl.textContent = shippingNote;
-        if (shippingNote === '$0') {
-          shippingEl.className = 'text-sm font-medium text-[#10B981]';
-        } else if (shippingNote.includes('無法送出')) {
-          shippingEl.className = 'text-sm font-medium text-[#EF4444]';
-        } else {
-          shippingEl.className = 'text-sm font-medium text-[#EF4444]';
-        }
-      }
+      shippingEl.textContent = shippingNote;
+      if (shippingNote === '$0') shippingEl.className = 'text-sm font-medium text-[#10B981]';
+      else if (shippingNote.includes('無法送出')) shippingEl.className = 'text-sm font-medium text-[#EF4444]';
+      else shippingEl.className = 'text-sm font-medium text-[#EF4444]';
 
       const warningEl = document.getElementById('volume-warning');
       const submitBtn = document.getElementById('submit-order-btn');
-
-      if (warningEl && submitBtn) {
-        if (hasError) {
-          warningEl.classList.remove('hidden');
-          warningEl.querySelector('p').textContent = volumeWarning;
-          submitBtn.disabled = true;
-          submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-        } else {
-          warningEl.classList.add('hidden');
-          submitBtn.disabled = false;
-          submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-        }
+      if (hasError) {
+        warningEl.classList.remove('hidden');
+        warningEl.querySelector('p').textContent = volumeWarning;
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      } else {
+        warningEl.classList.add('hidden');
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
       }
     }
 
+    // =========================
+    // 訂單彈窗
+    // =========================
     function showOrderSummary(orderData) {
       const modal = document.getElementById('order-modal');
       const content = document.getElementById('order-summary-content');
@@ -505,7 +585,7 @@
 
       const itemsHtml = orderData.items_list.map(item =>
         `<div class="flex justify-between items-center py-2 border-b border-[#E2E8F0]">
-          <span class="text-[#475569]">${item.name} x ${item.quantity}</span>
+          <span class="text-[#475569]">${escapeHtml(item.name)} x ${item.quantity}</span>
           <span class="font-semibold text-[#1E293B]">$${item.subtotal}</span>
         </div>`
       ).join('');
@@ -516,7 +596,7 @@
             <span class="text-2xl">📋</span>
             <h3 class="text-lg font-bold text-[#1E293B]">訂單編號</h3>
           </div>
-          <p class="text-xl font-mono font-semibold text-[#6366F1]">${orderData.order_id}</p>
+          <p class="text-xl font-mono font-semibold text-[#6366F1]">${escapeHtml(orderData.order_id)}</p>
         </div>
 
         <div class="bg-[#F8FAFC] rounded-2xl p-5 border border-[#E2E8F0]">
@@ -527,11 +607,11 @@
           <div class="space-y-2">
             <div class="flex justify-between">
               <span class="text-[#64748B]">姓名：</span>
-              <span class="font-semibold text-[#1E293B]">${orderData.customer_name}</span>
+              <span class="font-semibold text-[#1E293B]">${escapeHtml(orderData.customer_name)}</span>
             </div>
             <div class="flex justify-between">
               <span class="text-[#64748B]">電話：</span>
-              <span class="font-semibold text-[#1E293B]">${orderData.customer_phone}</span>
+              <span class="font-semibold text-[#1E293B]">${escapeHtml(orderData.customer_phone)}</span>
             </div>
           </div>
         </div>
@@ -544,11 +624,11 @@
           <div class="space-y-2">
             <div class="flex justify-between">
               <span class="text-[#64748B]">超商：</span>
-              <span class="font-semibold text-[#1E293B]">${orderData.store_type}</span>
+              <span class="font-semibold text-[#1E293B]">${escapeHtml(orderData.store_type)}</span>
             </div>
             <div class="flex justify-between">
               <span class="text-[#64748B]">門市：</span>
-              <span class="font-semibold text-[#1E293B]">${orderData.store_location}</span>
+              <span class="font-semibold text-[#1E293B]">${escapeHtml(orderData.store_location)}</span>
             </div>
           </div>
         </div>
@@ -558,7 +638,9 @@
             <span class="text-2xl">🛍️</span>
             <h3 class="text-lg font-bold text-[#1E293B]">訂購明細</h3>
           </div>
-          <div class="space-y-1">${itemsHtml}</div>
+          <div class="space-y-1">
+            ${itemsHtml}
+          </div>
         </div>
 
         <div class="bg-gradient-to-br from-[#FEF3C7] to-[#FED7AA] rounded-2xl p-5 border-2 border-[#F59E0B]">
@@ -577,7 +659,7 @@
             </div>
             <div class="flex justify-between">
               <span class="text-[#92400E]">運費：</span>
-              <span class="font-semibold text-[#78350F]">${orderData.shipping_fee}</span>
+              <span class="font-semibold text-[#78350F]">${escapeHtml(orderData.shipping_fee)}</span>
             </div>
             <div class="h-px bg-[#F97316]/30 my-3"></div>
             <div class="flex justify-between items-center">
@@ -592,12 +674,12 @@
             <div class="flex items-center gap-2">
               <span class="text-xl">🕐</span>
               <span class="text-sm text-[#64748B]">訂單時間：</span>
-              <span class="font-semibold text-[#1E293B]">${formattedDate}</span>
+              <span class="font-semibold text-[#1E293B]">${escapeHtml(formattedDate)}</span>
             </div>
             <div class="flex items-center gap-2">
               <span class="text-xl">✅</span>
               <span class="text-sm text-[#64748B]">狀態：</span>
-              <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#DBEAFE] text-sm font-semibold text-[#1E40AF]">${orderData.status}</span>
+              <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#DBEAFE] text-sm font-semibold text-[#1E40AF]">${escapeHtml(orderData.status)}</span>
             </div>
           </div>
         </div>
@@ -607,15 +689,17 @@
       modal.classList.add('flex');
     }
 
+    // =========================
+    // 送單
+    // =========================
     function formatItemsForText(items) {
       return items.map(item => `${item.name} x${item.quantity} = $${item.subtotal}`).join('\n');
     }
 
     async function sendToWebhook(orderData) {
-      const webhookUrl = 'https://hook.us2.make.com/n77h23qh56jxi7idshlmcm96yt9qrrc1';
       const itemsText = formatItemsForText(orderData.items_list);
 
-      const formattedData = {
+      const payload = {
         order_id: orderData.order_id,
         customer_name: orderData.customer_name,
         customer_phone: orderData.customer_phone,
@@ -632,122 +716,14 @@
         line_display_name: window.LINE_NAME || ""
       };
 
-      try {
-        const response = await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formattedData)
-        });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return { success: true, message: 'Webhook 通知已發送' };
-      } catch (error) {
-        console.error('Webhook 錯誤:', error);
-        return { success: false, message: 'Webhook 通知發送失敗: ' + error.message };
-      }
-    }
-
-    async function submitOrder() {
-      const submitBtn = document.getElementById('submit-order-btn');
-      const submitText = document.getElementById('submit-text');
-      const submitIcon = document.getElementById('submit-icon');
-
-      if (submitBtn.disabled) return;
-
-      const customerName = document.getElementById('customer-name').value.trim();
-      const storeLocation = document.getElementById('store-location').value.trim();
-      const customerPhone = document.getElementById('customer-phone').value.trim();
-
-      const selectedStore = document.querySelector('.store-btn[data-selected="true"]');
-      const storeName = selectedStore ? selectedStore.getAttribute('data-store') : '';
-
-      if (!customerName) { showMessage('請填寫訂購人名稱', 'error'); return; }
-      if (!storeName) { showMessage('請選擇取貨超商', 'error'); return; }
-      if (!storeLocation) { showMessage('請填寫取貨門市', 'error'); return; }
-      if (!customerPhone) { showMessage('請填寫取貨人電話', 'error'); return; }
-
-      let orderItems = [];
-      let hasItems = false;
-
-      Object.keys(products).forEach(id => {
-        const qty = parseInt(document.getElementById(id).value) || 0;
-        if (qty > 0) {
-          hasItems = true;
-          orderItems.push({
-            name: products[id].name,
-            quantity: qty,
-            price: products[id].price,
-            subtotal: qty * products[id].price
-          });
-        }
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
 
-      if (!hasItems) { showMessage('請至少選擇一項商品', 'error'); return; }
-
-      const totalItems = parseInt(document.getElementById('total-items').textContent) || 0;
-      const totalWeight = parseFloat(document.getElementById('total-weight').textContent) || 0;
-      const totalPrice = parseInt(document.getElementById('total-price').textContent) || 0;
-      const shippingNote = document.getElementById('shipping-note').textContent;
-
-      submitBtn.disabled = true;
-      submitText.textContent = '送出中...';
-      submitIcon.innerHTML = '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>';
-      submitIcon.classList.add('animate-spin');
-      showMessage('正在傳送訂單資訊...', 'loading');
-
-      const orderData = {
-        order_id: 'ORD-' + Date.now(),
-        customer_name: customerName,
-        store_type: storeName === '711' ? '7-ELEVEN' : '全家',
-        store_location: storeLocation,
-        customer_phone: customerPhone,
-        items_detail: JSON.stringify(orderItems),
-        items_list: orderItems,
-        total_items: totalItems,
-        total_weight: totalWeight,
-        shipping_fee: shippingNote,
-        total_price: totalPrice,
-        order_date: new Date().toISOString(),
-        status: '已送出',
-        line_user_id: window.LINE_USER_ID || "",
-        line_display_name: window.LINE_NAME || ""
-      };
-
-      let webhookSuccess = false;
-
-      try {
-        const webhookResult = await sendToWebhook(orderData);
-        webhookSuccess = webhookResult.success;
-      } catch (error) {
-        console.error('送出訂單時發生錯誤:', error.message);
-      } finally {
-        submitIcon.classList.remove('animate-spin');
-        submitIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>';
-        submitBtn.disabled = false;
-        submitText.textContent = '確認並送出訂單';
-      }
-
-      if (webhookSuccess) {
-        showMessage('✅ 訂單已發送至 Google 表單！', 'success');
-        showOrderSummary(orderData);
-
-        setTimeout(() => {
-          document.getElementById('customer-name').value = '';
-          document.getElementById('store-location').value = '';
-          document.getElementById('customer-phone').value = '';
-
-          Object.keys(products).forEach(id => { document.getElementById(id).value = 0; });
-
-          document.querySelectorAll('.store-btn').forEach(btn => {
-            btn.removeAttribute('data-selected');
-            btn.classList.remove('border-[#6366F1]', 'text-[#6366F1]', 'bg-[#EEF2FF]');
-            btn.classList.add('border-[#CBD5E1]', 'text-[#475569]', 'bg-white');
-          });
-
-          calculateTotal();
-        }, 2000);
-      } else {
-        showMessage('❌ 送出失敗，請稍後再試', 'error');
-      }
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return true;
     }
 
     function showMessage(message, type) {
@@ -764,68 +740,192 @@
       }, 3000);
     }
 
-    function setupEventListeners() {
-      document.querySelectorAll('.store-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+    async function submitOrder() {
+      const submitBtn = document.getElementById('submit-order-btn');
+      const submitText = document.getElementById('submit-text');
+      const submitIcon = document.getElementById('submit-icon');
+
+      if (submitBtn.disabled) return;
+
+      const customerName = document.getElementById('customer-name').value.trim();
+      const storeLocation = document.getElementById('store-location').value.trim();
+      const customerPhone = document.getElementById('customer-phone').value.trim();
+      const selectedStore = document.querySelector('.store-btn[data-selected="true"]');
+      const storeKey = selectedStore ? selectedStore.getAttribute('data-store') : '';
+
+      if (!customerName) { showMessage('請填寫訂購人名稱', 'error'); return; }
+      if (!storeKey) { showMessage('請選擇取貨超商', 'error'); return; }
+      if (!storeLocation) { showMessage('請填寫取貨門市', 'error'); return; }
+      if (!customerPhone) { showMessage('請填寫取貨人電話', 'error'); return; }
+
+      const orderItems = [];
+      for (const pid of Object.keys(products)) {
+        const input = document.getElementById(pid);
+        if (!input) continue;
+
+        const qty = parseInt(input.value) || 0;
+        if (qty > 0) {
+          const p = products[pid];
+          orderItems.push({
+            product_id: pid,
+            name: p.name,
+            quantity: qty,
+            price: p.price,
+            subtotal: qty * p.price
+          });
+        }
+      }
+
+      if (orderItems.length === 0) { showMessage('請至少選擇一項商品', 'error'); return; }
+
+      const totalItems = parseInt(document.getElementById('total-items').textContent) || 0;
+      const totalWeight = parseFloat(document.getElementById('total-weight').textContent) || 0;
+      const totalPrice = parseInt(document.getElementById('total-price').textContent) || 0;
+      const shippingNote = document.getElementById('shipping-note').textContent;
+
+      submitBtn.disabled = true;
+      submitText.textContent = '送出中...';
+      submitIcon.innerHTML = '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>';
+      submitIcon.classList.add('animate-spin');
+      showMessage('正在傳送訂單資訊...', 'loading');
+
+      const orderData = {
+        order_id: 'ORD-' + Date.now(),
+        customer_name: customerName,
+        store_type: storeKey === '711' ? '7-ELEVEN' : '全家',
+        store_location: storeLocation,
+        customer_phone: customerPhone,
+        items_list: orderItems,
+        total_items: totalItems,
+        total_weight: totalWeight.toFixed(2),
+        shipping_fee: shippingNote,
+        total_price: totalPrice,
+        order_date: new Date().toISOString(),
+        status: '已送出',
+        line_user_id: window.LINE_USER_ID || "",
+        line_display_name: window.LINE_NAME || ""
+      };
+
+      try {
+        await sendToWebhook(orderData);
+        showMessage('✅ 訂單已發送至 Google 表單！', 'success');
+        showOrderSummary(orderData);
+
+        setTimeout(() => {
+          document.getElementById('customer-name').value = '';
+          document.getElementById('store-location').value = '';
+          document.getElementById('customer-phone').value = '';
+
+          for (const pid of Object.keys(products)) {
+            const input = document.getElementById(pid);
+            if (input) input.value = 0;
+          }
+
+          document.querySelectorAll('.store-btn').forEach(btn => {
+            btn.removeAttribute('data-selected');
+            btn.classList.remove('border-[#6366F1]', 'text-[#6366F1]', 'bg-[#EEF2FF]');
+            btn.classList.add('border-[#CBD5E1]', 'text-[#475569]', 'bg-white');
+          });
+
+          calculateTotal();
+        }, 2000);
+
+      } catch (e) {
+        console.error(e);
+        showMessage('❌ 送出失敗，請稍後再試', 'error');
+      } finally {
+        submitIcon.classList.remove('animate-spin');
+        submitIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>';
+        submitBtn.disabled = false;
+        submitText.textContent = '確認並送出訂單';
+      }
+    }
+
+    // =========================
+    // 事件（用事件委派，動態生成也能用）
+    // =========================
+    function setupEventDelegation() {
+      document.addEventListener("click", (e) => {
+        const qtyBtn = e.target.closest(".qty-btn");
+        if (qtyBtn) {
+          e.preventDefault();
+          const action = qtyBtn.getAttribute("data-action");
+          const targetId = qtyBtn.getAttribute("data-target");
+          const input = document.getElementById(targetId);
+          if (!input) return;
+
+          const current = parseInt(input.value) || 0;
+          if (action === "increase") input.value = current + 1;
+          if (action === "decrease" && current > 0) input.value = current - 1;
+
+          calculateTotal();
+          return;
+        }
+
+        const storeBtn = e.target.closest(".store-btn");
+        if (storeBtn) {
           e.preventDefault();
           document.querySelectorAll('.store-btn').forEach(b => {
             b.removeAttribute('data-selected');
             b.classList.remove('border-[#6366F1]', 'text-[#6366F1]', 'bg-[#EEF2FF]');
             b.classList.add('border-[#CBD5E1]', 'text-[#475569]', 'bg-white');
           });
-          this.setAttribute('data-selected', 'true');
-          this.classList.remove('border-[#CBD5E1]', 'text-[#475569]', 'bg-white');
-          this.classList.add('border-[#6366F1]', 'text-[#6366F1]', 'bg-[#EEF2FF]');
-        });
-      });
+          storeBtn.setAttribute('data-selected', 'true');
+          storeBtn.classList.remove('border-[#CBD5E1]', 'text-[#475569]', 'bg-white');
+          storeBtn.classList.add('border-[#6366F1]', 'text-[#6366F1]', 'bg-[#EEF2FF]');
+          return;
+        }
 
-      document.querySelectorAll('.qty-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          const action = this.getAttribute('data-action');
-          const targetId = this.getAttribute('data-target');
-          const input = document.getElementById(targetId);
-          const current = parseInt(input.value) || 0;
-
-          if (action === 'increase') input.value = current + 1;
-          else if (action === 'decrease' && current > 0) input.value = current - 1;
-
-          calculateTotal();
-        });
-      });
-
-      const submitBtn = document.getElementById('submit-order-btn');
-      if (submitBtn) {
-        submitBtn.addEventListener('click', function(e) {
+        const submitBtn = e.target.closest("#submit-order-btn");
+        if (submitBtn) {
           e.preventDefault();
           submitOrder();
-        });
-      }
+          return;
+        }
 
-      const closeModalBtn = document.getElementById('close-modal-btn');
-      if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', function(e) {
+        const closeBtn = e.target.closest("#close-modal-btn");
+        if (closeBtn) {
           e.preventDefault();
-          const modal = document.getElementById('order-modal');
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
-        });
-      }
+          const modal = document.getElementById("order-modal");
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+          return;
+        }
 
-      const modal = document.getElementById('order-modal');
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-          }
-        });
-      }
+        const modal = e.target.closest("#order-modal");
+        if (modal && e.target === modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+          return;
+        }
+      });
     }
 
-    (function init() {
-      setupEventListeners();
+    // =========================
+    // init
+    // =========================
+    (async function init() {
+      setupEventDelegation();
       calculateTotal();
+      await initLIFF();
+
+      try {
+        await loadProductsFromSheet();
+        renderCatalogFromProducts();
+        calculateTotal();
+      } catch (e) {
+        console.warn("⚠️ 讀取 Sheet 失敗：", e.message);
+        const catalog = document.getElementById("catalog");
+        if (catalog) {
+          catalog.innerHTML = `
+            <div class="bg-white rounded-2xl border-2 border-[#E2E8F0] p-5">
+              <div class="text-base font-semibold text-[#1E293B]">商品載入失敗</div>
+              <div class="text-sm text-[#64748B] mt-1">請確認 Sheet 是否已「發布到網路」且 CSV 連結可直接開啟</div>
+              <div class="text-xs text-[#94A3B8] mt-3 break-all">${escapeHtml(SHEET_CSV_URL)}</div>
+            </div>
+          `;
+        }
+      }
     })();
   </script>
 </body>
