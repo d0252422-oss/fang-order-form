@@ -7,80 +7,37 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <style>
-    body {
-      box-sizing: border-box;
-    }
-    html, body {
-      height: 100%;
-      -webkit-overflow-scrolling: touch;
-    }
-    * {
-      -webkit-tap-highlight-color: transparent;
-    }
-    .elegant-shadow {
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
-    }
-    .focus-ring:focus-visible {
-      outline: 3px solid rgba(99, 102, 241, 0.5);
-      outline-offset: 2px;
-    }
-    .qty-btn {
-      transition: all 0.2s ease;
-      -webkit-user-select: none;
-      user-select: none;
-      cursor: pointer;
-      touch-action: manipulation;
-    }
-    .qty-btn:active {
-      transform: scale(0.95);
-    }
-    button {
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    input[type="text"],
-    input[type="tel"],
-    input[type="number"] {
-      -webkit-appearance: none;
-      appearance: none;
-      border-radius: 12px;
-    }
-    .store-btn {
-      touch-action: manipulation;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    .animate-spin {
-      animation: spin 1s linear infinite;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .modal-overlay {
-      animation: fadeIn 0.2s ease-out;
-    }
+    body { box-sizing: border-box; }
+    html, body { height: 100%; -webkit-overflow-scrolling: touch; }
+    * { -webkit-tap-highlight-color: transparent; }
+    .elegant-shadow { box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25); }
+    .focus-ring:focus-visible { outline: 3px solid rgba(99, 102, 241, 0.5); outline-offset: 2px; }
+    .qty-btn { transition: all 0.2s ease; -webkit-user-select: none; user-select: none; cursor: pointer; touch-action: manipulation; }
+    .qty-btn:active { transform: scale(0.95); }
+    button { -webkit-appearance: none; appearance: none; }
+    input[type="text"], input[type="tel"], input[type="number"] { -webkit-appearance: none; appearance: none; border-radius: 12px; }
+    .store-btn { touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .animate-spin { animation: spin 1s linear infinite; }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .modal-overlay { animation: fadeIn 0.2s ease-out; }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
 
- <!-- ✅ 最上方固定 padding（上下更短，左右不變） -->
- <body class="h-full w-full bg-[#F8FAFC] flex items-center justify-center px-4 md:px-6 py-2 md:py-2.5">
+ <!-- ✅ 最上方/最下方：整頁外框 padding 再縮短 -->
+ <body class="h-full w-full bg-[#F8FAFC] flex items-center justify-center px-4 md:px-6 py-1.5 md:py-2">
   <div class="w-full max-w-6xl h-full max-h-[920px] mx-auto flex items-center justify-center">
    <div id="order-root" class="w-full h-full bg-white rounded-3xl elegant-shadow border border-[#E2E8F0] overflow-hidden flex flex-col">
 
     <!-- 頂部品牌區 -->
-    <!-- ✅ header：更緊湊（py-2.5） -->
-    <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-2.5 md:py-2.5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <!-- ✅ header 更緊湊 -->
+    <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-2 md:py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
      <div class="flex-1">
       <div class="flex items-center gap-3 mb-2">
-       <div class="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center"><span class="text-white text-xl font-bold">F</span>
-       </div>
+       <div class="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center"><span class="text-white text-xl font-bold">F</span></div>
        <div>
         <h1 id="shop-name" class="text-2xl md:text-3xl font-bold text-[#78350F]">Fang心購</h1>
         <p id="shop-tagline" class="text-sm text-[#92400E] mt-0.5">新鮮冷凍 · 安心取貨</p>
@@ -90,20 +47,14 @@
 
      <!-- 訂單摘要卡片 -->
      <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-4 border border-[#F97316]/30 min-w-[240px]">
-      <div class="flex items-center justify-between mb-3"><span class="text-xs uppercase tracking-wider text-[#92400E]">訂單摘要</span> <span class="text-xs text-[#C2410C]">即時計算</span>
-      </div>
+      <div class="flex items-center justify-between mb-3"><span class="text-xs uppercase tracking-wider text-[#92400E]">訂單摘要</span> <span class="text-xs text-[#C2410C]">即時計算</span></div>
       <div class="space-y-2">
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總件數</span> <span id="total-items" class="text-lg font-semibold text-[#78350F]">0 件</span>
-       </div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總重量</span> <span id="total-weight" class="text-lg font-semibold text-[#78350F]">0 kg</span>
-       </div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總體積</span> <span id="total-volume" class="text-lg font-semibold text-[#78350F]">0 cm³</span>
-       </div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">運費</span> <span id="shipping-note" class="text-sm font-medium text-[#92400E]">-</span>
-       </div>
+       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總件數</span> <span id="total-items" class="text-lg font-semibold text-[#78350F]">0 件</span></div>
+       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總重量</span> <span id="total-weight" class="text-lg font-semibold text-[#78350F]">0 kg</span></div>
+       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">總體積</span> <span id="total-volume" class="text-lg font-semibold text-[#78350F]">0 cm³</span></div>
+       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">運費</span> <span id="shipping-note" class="text-sm font-medium text-[#92400E]">-</span></div>
        <div class="h-px bg-[#F97316]/20 my-2"></div>
-       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">預估金額</span> <span class="text-2xl font-bold text-[#EA580C]"> $<span id="total-price">0</span> </span>
-       </div>
+       <div class="flex items-center justify-between"><span class="text-sm text-[#78350F]">預估金額</span> <span class="text-2xl font-bold text-[#EA580C]"> $<span id="total-price">0</span> </span></div>
        <div id="volume-warning" class="mt-3 p-2 bg-[#FEE2E2] border border-[#EF4444] rounded-lg hidden">
         <p class="text-xs text-[#991B1B] font-medium leading-relaxed"></p>
        </div>
@@ -118,13 +69,14 @@
      <section class="bg-gradient-to-br from-[#F1F5F9] to-[#E2E8F0] rounded-2xl p-5 border border-[#CBD5E1]">
       <div class="flex items-start gap-4">
        <div class="w-8 h-8 rounded-lg bg-[#6366F1] flex items-center justify-center flex-shrink-0 mt-0.5">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
        </div>
        <div class="flex-1">
         <h2 class="text-base font-semibold text-[#1E293B] mb-1">取貨超商類型</h2>
         <p class="text-sm text-[#64748B] mb-3">請選擇您方便取貨的超商據點</p>
-        <div class="grid grid-cols-2 gap-3"><button type="button" data-store="711" class="store-btn focus-ring bg-white border-2 border-[#CBD5E1] rounded-xl px-4 py-3 text-sm font-medium text-[#475569] transition-all"> 7-ELEVEN </button> <button type="button" data-store="family" class="store-btn focus-ring bg-white border-2 border-[#CBD5E1] rounded-xl px-4 py-3 text-sm font-medium text-[#475569] transition-all"> 全家 </button>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" data-store="711" class="store-btn focus-ring bg-white border-2 border-[#CBD5E1] rounded-xl px-4 py-3 text-sm font-medium text-[#475569] transition-all">7-ELEVEN</button>
+          <button type="button" data-store="family" class="store-btn focus-ring bg-white border-2 border-[#CBD5E1] rounded-xl px-4 py-3 text-sm font-medium text-[#475569] transition-all">全家</button>
         </div>
        </div>
       </div>
@@ -134,8 +86,7 @@
      <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] p-5">
       <div class="flex items-center gap-3 mb-4">
        <div class="w-8 h-8 rounded-lg bg-[#6366F1] flex items-center justify-center">
-        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
        </div>
        <div>
         <h2 class="text-base font-semibold text-[#1E293B]">訂購人資訊</h2>
@@ -143,11 +94,17 @@
        </div>
       </div>
       <div class="space-y-4">
-       <div><label for="customer-name" class="block text-sm font-medium text-[#475569] mb-2"> 訂購人名稱 <span class="text-[#EF4444]">*</span> </label> <input type="text" id="customer-name" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="請輸入您的姓名">
+       <div>
+        <label for="customer-name" class="block text-sm font-medium text-[#475569] mb-2">訂購人名稱 <span class="text-[#EF4444]">*</span></label>
+        <input type="text" id="customer-name" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="請輸入您的姓名">
        </div>
-       <div><label for="store-location" class="block text-sm font-medium text-[#475569] mb-2"> 取貨門市 <span class="text-[#EF4444]">*</span> </label> <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路">
+       <div>
+        <label for="store-location" class="block text-sm font-medium text-[#475569] mb-2">取貨門市 <span class="text-[#EF4444]">*</span></label>
+        <input type="text" id="store-location" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：台北市中正區館前路">
        </div>
-       <div><label for="customer-phone" class="block text-sm font-medium text-[#475569] mb-2"> 取貨人電話 <span class="text-[#EF4444]">*</span> </label> <input type="tel" id="customer-phone" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：0912-345-678">
+       <div>
+        <label for="customer-phone" class="block text-sm font-medium text-[#475569] mb-2">取貨人電話 <span class="text-[#EF4444]">*</span></label>
+        <input type="tel" id="customer-phone" class="w-full px-4 py-3 bg-[#F8FAFC] border-2 border-[#CBD5E1] rounded-xl text-[#1E293B] placeholder-[#94A3B8] focus-ring focus:border-[#6366F1] transition-colors" placeholder="例如：0912-345-678">
        </div>
       </div>
      </section>
@@ -156,8 +113,7 @@
      <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
       <div class="bg-gradient-to-r from-[#0EA5E9] to-[#06B6D4] px-5 py-4">
        <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🦐</span>
-        </div>
+        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🦐</span></div>
         <div>
          <h2 id="seafood-title" class="text-xl font-bold text-white">冷凍海鮮</h2>
          <p class="text-sm text-white/80">深海直送 · 鎖住鮮味</p>
@@ -171,22 +127,33 @@
           <h3 class="text-base font-semibold text-[#1E293B]">冷凍白蝦（大）</h3><span class="text-lg font-bold text-[#0EA5E9]">$260</span>
          </div>
          <p class="text-sm text-[#64748B] mb-2">630g / 包</p>
-         <div class="flex flex-wrap gap-2"><span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]"> 0.63 kg </span> <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]"> 需冷凍 </span>
+         <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.63 kg</span>
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]">需冷凍</span>
          </div>
         </div>
-        <div class="flex items-center gap-3"><button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="seafood-1"> − </button> <input type="number" id="seafood-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly> <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="seafood-1"> + </button>
+        <div class="flex items-center gap-3">
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="seafood-1">−</button>
+         <input type="number" id="seafood-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly>
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="seafood-1">+</button>
         </div>
        </div>
+
        <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
         <div class="flex-1">
          <div class="flex items-start justify-between mb-2">
           <h3 class="text-base font-semibold text-[#1E293B]">冷凍白蝦（小）</h3><span class="text-lg font-bold text-[#0EA5E9]">$340</span>
          </div>
          <p class="text-sm text-[#64748B] mb-2">830g / 包</p>
-         <div class="flex flex-wrap gap-2"><span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]"> 0.83 kg </span> <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]"> 需冷凍 </span>
+         <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.83 kg</span>
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]">需冷凍</span>
          </div>
         </div>
-        <div class="flex items-center gap-3"><button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="seafood-2"> − </button> <input type="number" id="seafood-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly> <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="seafood-2"> + </button>
+        <div class="flex items-center gap-3">
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="seafood-2">−</button>
+         <input type="number" id="seafood-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly>
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="seafood-2">+</button>
         </div>
        </div>
       </div>
@@ -196,8 +163,7 @@
      <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
       <div class="bg-gradient-to-r from-[#EF4444] to-[#F97316] px-5 py-4">
        <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🥩</span>
-        </div>
+        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🥩</span></div>
         <div>
          <h2 id="meat-title" class="text-xl font-bold text-white">冷凍肉品</h2>
          <p class="text-sm text-white/80">嚴選產地 · 品質保證</p>
@@ -211,22 +177,33 @@
           <h3 class="text-base font-semibold text-[#1E293B]">鹽酥棒棒腿</h3><span class="text-lg font-bold text-[#EF4444]">$35</span>
          </div>
          <p class="text-sm text-[#64748B] mb-2">約 150g / 支</p>
-         <div class="flex flex-wrap gap-2"><span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]"> 0.15 kg </span> <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEE2E2] text-xs font-medium text-[#991B1B]"> 即食方便 </span>
+         <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.15 kg</span>
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEE2E2] text-xs font-medium text-[#991B1B]">即食方便</span>
          </div>
         </div>
-        <div class="flex items-center gap-3"><button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="meat-1"> − </button> <input type="number" id="meat-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly> <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="meat-1"> + </button>
+        <div class="flex items-center gap-3">
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="meat-1">−</button>
+         <input type="number" id="meat-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly>
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="meat-1">+</button>
         </div>
        </div>
+
        <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
         <div class="flex-1">
          <div class="flex items-start justify-between mb-2">
           <h3 class="text-base font-semibold text-[#1E293B]">鹽酥大雞腿</h3><span class="text-lg font-bold text-[#EF4444]">$65</span>
          </div>
          <p class="text-sm text-[#64748B] mb-2">約 220g / 支</p>
-         <div class="flex flex-wrap gap-2"><span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]"> 0.22 kg </span> <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#D1FAE5] text-xs font-medium text-[#065F46]"> 大份量 </span>
+         <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">0.22 kg</span>
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#D1FAE5] text-xs font-medium text-[#065F46]">大份量</span>
          </div>
         </div>
-        <div class="flex items-center gap-3"><button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="meat-2"> − </button> <input type="number" id="meat-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly> <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="meat-2"> + </button>
+        <div class="flex items-center gap-3">
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="meat-2">−</button>
+         <input type="number" id="meat-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly>
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="meat-2">+</button>
         </div>
        </div>
       </div>
@@ -236,8 +213,7 @@
      <section class="bg-white rounded-2xl border-2 border-[#E2E8F0] overflow-hidden">
       <div class="bg-gradient-to-r from-[#10B981] to-[#14B8A6] px-5 py-4">
        <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🥦</span>
-        </div>
+        <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-2xl">🥦</span></div>
         <div>
          <h2 id="vegetable-title" class="text-xl font-bold text-white">冷凍蔬菜</h2>
          <p class="text-sm text-white/80">急速冷凍 · 保留營養</p>
@@ -251,22 +227,33 @@
           <h3 class="text-base font-semibold text-[#1E293B]">冷凍花椰菜</h3><span class="text-lg font-bold text-[#10B981]">$80</span>
          </div>
          <p class="text-sm text-[#64748B] mb-2">1000g / 包</p>
-         <div class="flex flex-wrap gap-2"><span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]"> 1.0 kg </span> <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#D1FAE5] text-xs font-medium text-[#065F46]"> IQF 急凍 </span>
+         <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">1.0 kg</span>
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#D1FAE5] text-xs font-medium text-[#065F46]">IQF 急凍</span>
          </div>
         </div>
-        <div class="flex items-center gap-3"><button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="veg-1"> − </button> <input type="number" id="veg-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly> <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="veg-1"> + </button>
+        <div class="flex items-center gap-3">
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="veg-1">−</button>
+         <input type="number" id="veg-1" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly>
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="veg-1">+</button>
         </div>
        </div>
+
        <div class="flex flex-col md:flex-row md:items-center gap-4 p-4 bg-[#F8FAFC] rounded-xl border border-[#E2E8F0]">
         <div class="flex-1">
          <div class="flex items-start justify-between mb-2">
           <h3 class="text-base font-semibold text-[#1E293B]">冷凍馬鈴薯丁</h3><span class="text-lg font-bold text-[#10B981]">$110</span>
          </div>
          <p class="text-sm text-[#64748B] mb-2">1000g / 包</p>
-         <div class="flex flex-wrap gap-2"><span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]"> 1.0 kg </span> <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]"> 方便料理 </span>
+         <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#DBEAFE] text-xs font-medium text-[#1E40AF]">1.0 kg</span>
+          <span class="inline-flex items-center px-2 py-1 rounded-lg bg-[#FEF3C7] text-xs font-medium text-[#92400E]">方便料理</span>
          </div>
         </div>
-        <div class="flex items-center gap-3"><button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="veg-2"> − </button> <input type="number" id="veg-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly> <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="veg-2"> + </button>
+        <div class="flex items-center gap-3">
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#E2E8F0] flex items-center justify-center text-[#475569] font-bold" data-action="decrease" data-target="veg-2">−</button>
+         <input type="number" id="veg-2" class="w-16 text-center text-lg font-semibold text-[#1E293B] bg-white border-2 border-[#CBD5E1] rounded-xl py-2 focus-ring" value="0" min="0" readonly>
+         <button type="button" class="qty-btn focus-ring w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center text-white font-bold" data-action="increase" data-target="veg-2">+</button>
         </div>
        </div>
       </div>
@@ -274,15 +261,19 @@
 
     </main>
 
-    <!-- ✅ B：確認送單按鈕區（上下 padding 更短） -->
-    <div class="bg-white border-t-2 border-[#E2E8F0] px-6 md:px-8 py-2 md:py-2.5"><button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
-      <svg id="submit-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg><span id="submit-text" class="text-lg">確認並送出訂單</span> </button>
-     <p id="submit-message" class="text-xs text-center text-[#64748B] mt-3">訂單將發送至 Google 表單</p>
+    <!-- ✅ B：底部送出區更短 -->
+    <div class="bg-white border-t-2 border-[#E2E8F0] px-6 md:px-8 py-1.5 md:py-2">
+      <button type="button" id="submit-order-btn" class="w-full bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 focus-ring disabled:opacity-50 disabled:cursor-not-allowed">
+        <svg id="submit-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span id="submit-text" class="text-lg">確認並送出訂單</span>
+      </button>
+      <p id="submit-message" class="text-xs text-center text-[#64748B] mt-3">訂單將發送至 Google 表單</p>
     </div>
 
-    <!-- ✅ C：底部備註（上下 padding 更短） -->
-    <footer class="bg-[#F8FAFC] border-t border-[#E2E8F0] px-6 md:px-8 py-1.5 md:py-2">
+    <!-- ✅ C：footer 更短 -->
+    <footer class="bg-[#F8FAFC] border-t border-[#E2E8F0] px-6 md:px-8 py-1 md:py-1.5">
      <p id="footer-note" class="text-xs text-center text-[#64748B] leading-relaxed">本頁面為訂單試算工具，實際商品與價格以團購公告為準。</p>
     </footer>
 
@@ -294,18 +285,17 @@
    <div class="modal-overlay bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90%] overflow-y-auto">
     <div class="sticky top-0 bg-gradient-to-r from-[#6366F1] to-[#4F46E5] px-6 py-5 flex items-center justify-between">
      <div class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-3xl">🛒</span>
-      </div>
+      <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center"><span class="text-3xl">🛒</span></div>
       <div>
        <h2 class="text-2xl font-bold text-white">訂單通知</h2>
        <p class="text-sm text-white/80">訂單已成功送出</p>
       </div>
-     </div><button type="button" id="close-modal-btn" class="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
-      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg></button>
+     </div>
+     <button type="button" id="close-modal-btn" class="w-10 h-10 rounded-xl bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+     </button>
     </div>
-    <div id="order-summary-content" class="p-6 space-y-5"><!-- 訂單內容將由 JavaScript 動態填入 -->
-    </div>
+    <div id="order-summary-content" class="p-6 space-y-5"></div>
    </div>
   </div>
 
@@ -322,7 +312,7 @@
     // ⭐ 初始化 LIFF（自動判斷環境）
     async function initLIFF() {
       try {
-        // 如果不是在 LINE App → Canva/電腦/瀏覽器 → 測試模式
+        // 如果不是在 LINE App → 測試模式
         if (!isInLineApp()) {
           console.log("非 LINE 環境：啟用測試模式");
           window.LINE_USER_ID = "test_user";
@@ -353,13 +343,10 @@
 
       } catch (err) {
         console.error("LIFF 初始化錯誤:", err);
-        // LIFF 出問題也不要崩潰 → 自動切到測試模式
         window.LINE_USER_ID = "error_user";
         window.LINE_NAME = "測試使用者";
       }
     }
-
-    // ⭐ 啟動 LIFF
     initLIFF();
 
     const products = {
@@ -385,7 +372,7 @@
           totalItems += qty;
           totalWeight += qty * products[id].weight;
           subtotal += qty * products[id].price;
-          
+
           const vol = products[id].volume;
           maxLength = Math.max(maxLength, vol.l);
           maxWidth = Math.max(maxWidth, vol.w);
@@ -399,7 +386,7 @@
 
       let volumeWarning = '';
       let hasError = false;
-      
+
       if (totalItems > 0) {
         if (totalWeight > 9) {
           volumeWarning = `⚠️ 總重量 ${totalWeight.toFixed(2)} kg 超過限制（單筆訂單不可超過 9 kg）`;
@@ -415,7 +402,7 @@
 
       let shippingFee = 0;
       let shippingNote = '';
-      
+
       if (subtotal > 0 && subtotal < 1500) {
         shippingFee = 150;
         shippingNote = '$150';
@@ -433,7 +420,7 @@
       document.getElementById('total-weight').textContent = totalWeight.toFixed(2) + ' kg';
       document.getElementById('total-volume').textContent = totalVolume.toLocaleString() + ' cm³';
       document.getElementById('total-price').textContent = totalPrice;
-      
+
       const shippingEl = document.getElementById('shipping-note');
       if (shippingEl) {
         shippingEl.textContent = shippingNote;
@@ -448,7 +435,7 @@
 
       const warningEl = document.getElementById('volume-warning');
       const submitBtn = document.getElementById('submit-order-btn');
-      
+
       if (warningEl && submitBtn) {
         if (hasError) {
           warningEl.classList.remove('hidden');
@@ -466,7 +453,7 @@
     function showOrderSummary(orderData) {
       const modal = document.getElementById('order-modal');
       const content = document.getElementById('order-summary-content');
-      
+
       const orderDate = new Date(orderData.order_date);
       const formattedDate = orderDate.toLocaleString('zh-TW', {
         year: 'numeric',
@@ -476,7 +463,7 @@
         minute: '2-digit'
       });
 
-      const itemsHtml = orderData.items_list.map(item => 
+      const itemsHtml = orderData.items_list.map(item =>
         `<div class="flex justify-between items-center py-2 border-b border-[#E2E8F0]">
           <span class="text-[#475569]">${item.name} x ${item.quantity}</span>
           <span class="font-semibold text-[#1E293B]">$${item.subtotal}</span>
@@ -531,9 +518,7 @@
             <span class="text-2xl">🛍️</span>
             <h3 class="text-lg font-bold text-[#1E293B]">訂購明細</h3>
           </div>
-          <div class="space-y-1">
-            ${itemsHtml}
-          </div>
+          <div class="space-y-1">${itemsHtml}</div>
         </div>
 
         <div class="bg-gradient-to-br from-[#FEF3C7] to-[#FED7AA] rounded-2xl p-5 border-2 border-[#F59E0B]">
@@ -582,17 +567,12 @@
       modal.classList.add('flex');
     }
 
-    // ⭐ 格式化訂單明細（給 Make + LINE 使用）
     function formatItemsForText(items) {
-      return items.map(item =>
-        `${item.name} x${item.quantity} = $${item.subtotal}`
-      ).join('\n');
+      return items.map(item => `${item.name} x${item.quantity} = $${item.subtotal}`).join('\n');
     }
 
     async function sendToWebhook(orderData) {
       const webhookUrl = 'https://hook.us2.make.com/n77h23qh56jxi7idshlmcm96yt9qrrc1';
-
-      // 格式化訂單明細為易讀文字
       const itemsText = formatItemsForText(orderData.items_list);
 
       const formattedData = {
@@ -615,16 +595,10 @@
       try {
         const response = await fetch(webhookUrl, {
           method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formattedData)
         });
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return { success: true, message: 'Webhook 通知已發送' };
       } catch (error) {
         console.error('Webhook 錯誤:', error);
@@ -637,36 +611,23 @@
       const submitText = document.getElementById('submit-text');
       const submitIcon = document.getElementById('submit-icon');
 
-      if (submitBtn.disabled) {
-        return;
-      }
+      if (submitBtn.disabled) return;
 
       const customerName = document.getElementById('customer-name').value.trim();
       const storeLocation = document.getElementById('store-location').value.trim();
       const customerPhone = document.getElementById('customer-phone').value.trim();
-      
+
       const selectedStore = document.querySelector('.store-btn[data-selected="true"]');
       const storeName = selectedStore ? selectedStore.getAttribute('data-store') : '';
 
-      if (!customerName) {
-        showMessage('請填寫訂購人名稱', 'error');
-        return;
-      }
-      if (!storeName) {
-        showMessage('請選擇取貨超商', 'error');
-        return;
-      }
-      if (!storeLocation) {
-        showMessage('請填寫取貨門市', 'error');
-        return;
-      }
-      if (!customerPhone) {
-        showMessage('請填寫取貨人電話', 'error');
-        return;
-      }
+      if (!customerName) { showMessage('請填寫訂購人名稱', 'error'); return; }
+      if (!storeName) { showMessage('請選擇取貨超商', 'error'); return; }
+      if (!storeLocation) { showMessage('請填寫取貨門市', 'error'); return; }
+      if (!customerPhone) { showMessage('請填寫取貨人電話', 'error'); return; }
 
       let orderItems = [];
       let hasItems = false;
+
       Object.keys(products).forEach(id => {
         const qty = parseInt(document.getElementById(id).value) || 0;
         if (qty > 0) {
@@ -680,10 +641,7 @@
         }
       });
 
-      if (!hasItems) {
-        showMessage('請至少選擇一項商品', 'error');
-        return;
-      }
+      if (!hasItems) { showMessage('請至少選擇一項商品', 'error'); return; }
 
       const totalItems = parseInt(document.getElementById('total-items').textContent) || 0;
       const totalWeight = parseFloat(document.getElementById('total-weight').textContent) || 0;
@@ -719,7 +677,6 @@
       try {
         const webhookResult = await sendToWebhook(orderData);
         webhookSuccess = webhookResult.success;
-
       } catch (error) {
         console.error('送出訂單時發生錯誤:', error.message);
       } finally {
@@ -732,22 +689,20 @@
       if (webhookSuccess) {
         showMessage('✅ 訂單已發送至 Google 表單！', 'success');
         showOrderSummary(orderData);
-        
+
         setTimeout(() => {
           document.getElementById('customer-name').value = '';
           document.getElementById('store-location').value = '';
           document.getElementById('customer-phone').value = '';
-          
-          Object.keys(products).forEach(id => {
-            document.getElementById(id).value = 0;
-          });
-          
+
+          Object.keys(products).forEach(id => { document.getElementById(id).value = 0; });
+
           document.querySelectorAll('.store-btn').forEach(btn => {
             btn.removeAttribute('data-selected');
             btn.classList.remove('border-[#6366F1]', 'text-[#6366F1]', 'bg-[#EEF2FF]');
             btn.classList.add('border-[#CBD5E1]', 'text-[#475569]', 'bg-white');
           });
-          
+
           calculateTotal();
         }, 2000);
       } else {
@@ -758,7 +713,7 @@
     function showMessage(message, type) {
       const submitMessage = document.getElementById('submit-message');
       submitMessage.textContent = message;
-      
+
       if (type === 'success') {
         submitMessage.className = 'text-sm text-center text-[#10B981] font-medium mt-3';
       } else if (type === 'warning') {
@@ -766,7 +721,7 @@
       } else if (type === 'error') {
         submitMessage.className = 'text-sm text-center text-[#EF4444] font-medium mt-3';
       }
-      
+
       setTimeout(() => {
         submitMessage.textContent = '訂單將發送至 Google 表單';
         submitMessage.className = 'text-xs text-center text-[#64748B] mt-3';
@@ -795,13 +750,10 @@
           const targetId = this.getAttribute('data-target');
           const input = document.getElementById(targetId);
           const current = parseInt(input.value) || 0;
-          
-          if (action === 'increase') {
-            input.value = current + 1;
-          } else if (action === 'decrease' && current > 0) {
-            input.value = current - 1;
-          }
-          
+
+          if (action === 'increase') input.value = current + 1;
+          else if (action === 'decrease' && current > 0) input.value = current - 1;
+
           calculateTotal();
         });
       });
@@ -840,6 +792,5 @@
       calculateTotal();
     })();
   </script>
-
  </body>
 </html>
