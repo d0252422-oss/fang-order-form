@@ -53,7 +53,7 @@
     <div id="order-root" class="w-full h-full bg-white rounded-3xl elegant-shadow border border-[#E2E8F0] overflow-hidden flex flex-col">
 
       <!-- 頂部品牌區 -->
-      <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-2 md:py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4">
+      <header class="bg-gradient-to-r from-[#FED7AA] to-[#FDBA74] px-6 md:px-8 py-1 md:py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4">
         <div class="flex-1">
           <div class="flex items-center gap-3 mb-1">
             <div class="w-10 h-10 rounded-xl bg-[#6366F1] flex items-center justify-center">
@@ -66,8 +66,8 @@
           </div>
         </div>
 
-        <!-- 訂單摘要卡片（更扁） -->
-        <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-3 border border-[#F97316]/30 min-w-[240px]">
+        <!-- 訂單摘要卡片（更扁、更貼） -->
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl px-5 py-2 border border-[#F97316]/30 min-w-[240px]">
           <div class="flex items-center justify-between mb-2">
             <span class="text-xs uppercase tracking-wider text-[#92400E]">訂單摘要</span>
             <span class="text-xs text-[#C2410C]">即時計算</span>
@@ -354,16 +354,13 @@
   </div>
 
   <script>
-    // ⭐ LIFF ID 設定
     const LIFF_ID = "2008554940-VeRlOWJz";
 
-    // ⭐ 判斷是否在 LINE App
     function isInLineApp() {
       const ua = navigator.userAgent.toLowerCase();
       return ua.includes("line");
     }
 
-    // ⭐ 初始化 LIFF（自動判斷環境）
     async function initLIFF() {
       try {
         if (!isInLineApp()) {
@@ -757,13 +754,9 @@
       const submitMessage = document.getElementById('submit-message');
       submitMessage.textContent = message;
 
-      if (type === 'success') {
-        submitMessage.className = 'text-sm text-center text-[#10B981] font-medium mt-3';
-      } else if (type === 'warning') {
-        submitMessage.className = 'text-sm text-center text-[#F59E0B] font-medium mt-3';
-      } else if (type === 'error') {
-        submitMessage.className = 'text-sm text-center text-[#EF4444] font-medium mt-3';
-      }
+      if (type === 'success') submitMessage.className = 'text-sm text-center text-[#10B981] font-medium mt-3';
+      else if (type === 'warning') submitMessage.className = 'text-sm text-center text-[#F59E0B] font-medium mt-3';
+      else if (type === 'error') submitMessage.className = 'text-sm text-center text-[#EF4444] font-medium mt-3';
 
       setTimeout(() => {
         submitMessage.textContent = '訂單將發送至 Google 表單';
